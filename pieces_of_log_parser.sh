@@ -14,7 +14,7 @@ while read line; do chromium_openstaff.sh $line; done < ~/for_sshfs/temp2.txt
 
 # Вредонос на премиумах
 
- { logs n premium36; } | egrep "americanas|banking|Canada|blackfriday|visa|cheap|jackson|flight|ofertas|carnaval|walmart|cadastro|garantia|Galaxy|smartphone" > temp.txt; tac temp.txt | egrep -v " 404 | 403 | 500 | 503 |*error_domain.*|autopamp" | egrep "[a-zA-Z]{2}[0-9]{5}" | more;
+ { logs n premium36; } | egrep "americanas|banking|Canada|blackfriday|visa|cheap|jackson|flight|ofertas|carnaval|walmart|cadastro|garantia|Galaxy|smartphone" > temp.txt; tac temp.txt | egrep -v " 404 | 403 | 500 | 503 |*error_domain.*|autopamp" | egrep -o "[a-zA-Z]{2}[0-9]{5}" | more;
 
 
 { logs n premium36; } | egrep "americanas|banking|Canada|blackfriday|visa|cheap|jackson|flight|ofertas|carnaval|walmart|cadastro|garantia|Galaxy|smartphone" > temp.txt; tac temp.txt | egrep -v " 404 | 403 | 500 | 503 |*error_domain.*|autopamp" | egrep "[a-zA-Z]{2}[0-9]{5}" | awk '{print $6}' | awk 'BEGIN { FS = "." } ; { print $2 }' | sort | uniq | more;
